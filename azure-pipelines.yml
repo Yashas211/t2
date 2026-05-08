@@ -8,8 +8,8 @@ steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'package -DskipTests'
+    goals: 'clean package -DskipTests'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'
+    jdkVersionOption: '1.17'
     mavenVersionOption: 'Default'
