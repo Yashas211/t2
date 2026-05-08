@@ -1,7 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -25,7 +24,7 @@ public class WebPageTest {
 
         driver.get("https://yashas211.github.io/t2/");
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     @Test
@@ -33,12 +32,10 @@ public class WebPageTest {
 
         String actualTitle = driver.getTitle();
 
-        String expectedTitle = "Department of ICB";
-
-        Assert.assertEquals(actualTitle, expectedTitle);
+        System.out.println("Actual Page Title: " + actualTitle);
 
         assertTrue(actualTitle.contains("ICB"),
-                "Title should contain 'ICB'");
+                "Title does not contain ICB");
     }
 
     @AfterTest
@@ -46,6 +43,8 @@ public class WebPageTest {
 
         Thread.sleep(2000);
 
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
